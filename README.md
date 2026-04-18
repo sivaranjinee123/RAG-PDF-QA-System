@@ -96,7 +96,21 @@ AI-powered full-stack application that lets users upload PDF documents and ask n
 
 \---
 
+## 📸 Screenshots
 
+### Upload PDF - Screen 1
+![Upload 1](./screenshots/upload1.png)
+
+### Upload PDF - Screen 2
+![Upload 2](./screenshots/upload2.png)
+
+### Ask Questions - Screen 1
+![Ask 1](./screenshots/ask1.png)
+
+### Ask Questions - Screen 2
+![Ask 2](./screenshots/ask2.png)
+
+---
 
 \## 📂 Project Structure
 
