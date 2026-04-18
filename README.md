@@ -112,31 +112,24 @@ AI-powered full-stack application that lets users upload PDF documents and ask n
 
 ---
 
-\## 📂 Project Structure
+## 📂 Project Structure
 
-
-
-``` id="qsd0p0"
-
+```text
 RAG-System/
-
 ├── backend/
-
 │   ├── main.py
-
-│   ├── qa\_pipeline.py
-
-│   ├── vector\_store.py
-
+│   ├── qa_pipeline.py
+│   └── vector_store.py
 │
-
 ├── rag-frontend/
-
 │   ├── app/
-
-│   ├── page.tsx
-
+│   └── page.tsx
 │
-
+├── screenshots/
+│   ├── upload1.png
+│   ├── upload2.png
+│   ├── ask1.png
+│   └── ask2.png
+│
 └── README.md
-
+```
