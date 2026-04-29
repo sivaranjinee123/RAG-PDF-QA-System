@@ -81,7 +81,7 @@ export default function Home() {
   return (
     <main style={styles.page}>
       <div style={styles.card}>
-        <h1 style={styles.title}>RAG PDF Question Answering</h1>
+        <h1 style={styles.title}>RAG-Powered PDF Assistant</h1>
 
         {/* Upload Section */}
         <div style={styles.section}>

@@ -11,12 +11,16 @@ from qa_pipeline import ask_question
 
 load_dotenv()
 
-app = FastAPI()
+app = FastAPI(
+    title="RAG PDF QA API",
+    description="Upload PDF and ask questions using RAG",
+    version="1.0.0"
+)
 
-# Allow frontend requests
+# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # later change to http://localhost:3000
+    allow_origins=["*"],   # change after deploy
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,12 +29,19 @@ app.add_middleware(
 
 @app.get("/")
 def home():
-    return {"message": "RAG Backend Running"}
+    return {
+        "message": "RAG Backend Running",
+        "status": "success"
+    }
 
 
 @app.post("/upload")
 async def upload_pdf(file: UploadFile = File(...)):
     try:
+        # Validate PDF
+        if not file.filename.endswith(".pdf"):
+            return {"error": "Only PDF files allowed"}
+
         content = await file.read()
 
         docs = load_pdf(content)
@@ -43,7 +54,8 @@ async def upload_pdf(file: UploadFile = File(...)):
 
         return {
             "message": "Document uploaded successfully",
-            "total_chunks": len(chunks)
+            "total_chunks": len(chunks),
+            "filename": file.filename
         }
 
     except Exception as e:
@@ -60,7 +72,10 @@ async def ask(data: dict = Body(...)):
 
         answer = ask_question(query)
 
-        return {"answer": answer}
+        return {
+            "query": query,
+            "answer": answer
+        }
 
     except Exception as e:
         return {"error": str(e)}
